@@ -24,8 +24,8 @@
       {
         "type": "box",
         "position": [
+          0,
           50,
-          25,
           12
         ],
         "rotationMode": "degrees",
@@ -44,12 +44,12 @@
         "modelURL": "",
         "modelScale": 10,
         "modelAnimation": "None",
-        "color": "#00ff007c",
+        "color": "00ff007c",
         "imageType": "repeat",
         "imageURL": "",
         "uScale": 1,
         "vScale": 1,
-        "physicsOptions": "fixed",
+        "physicsOptions": "false",
         "magnetic": false,
         "laserDetection": null,
         "ultrasonicDetection": null,
@@ -61,11 +61,7 @@
     "startPos": "center",
     "startPosXYZStr": "",
     "startRotStr": "",
-    "startPosXYZ": [
-      0,
-      0,
-      0
-    ],
+    "startPosXYZ": null,
     "startRot": null,
     "arenaStartPosXYZ": null,
     "arenaStartRot": null
