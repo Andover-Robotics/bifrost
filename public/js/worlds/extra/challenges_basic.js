@@ -13,7 +13,7 @@ var challenges_basic = new function() {
     '<p>This world contains various challenges.</p>' +
     '<p>A completion code is issued for each completed challenge. This can be used to track students progress.</p>';
   this.thumbnail = 'images/worlds/challenge.jpg';
-
+// ADD WORLD BELOW HERE
   this.optionsConfigurations = [
     {
       option: 'jsonFile',
@@ -339,7 +339,7 @@ var challenges_basic = new function() {
     $info.find('.mission').click(this.displayMission);
     self.panel.drawWorldInfo($info);
   };
-
+// DISPLAY MISSION CODE
   this.displayMission = function() {
     let $message;
 
@@ -588,7 +588,7 @@ var challenges_basic = new function() {
       );
     } else if (self.options.jsonFile.includes('bifrost-TEST-1.json')) {
       $message = $(
-        '<p>Move your robot into the green box and start inside.</p>'
+        '<p> reyansh goons to cp </p>'
       );
     }
     
@@ -599,7 +599,7 @@ var challenges_basic = new function() {
     });
   };
 
-  // Render
+  // Render ADD WORLD HERE
   this.render = function(delta){
     self.parent.render(delta);
 
@@ -611,7 +611,7 @@ var challenges_basic = new function() {
     if (elapsedTime < 1000) {
       return;
     }
-    if (self.options.jsonFile.includes('TEST-1')) {
+    if (self.options.jsonFile.includes('bifrost-TEST-1')) {
       self.renderIntersectOne(delta, 'worldBaseObject_box0', 'BIFROST');
     } else if (self.options.jsonFile.includes('basic-1.json')) {
       self.renderIntersectOne(delta, 'worldBaseObject_box0', 'UNICORN');
@@ -782,8 +782,6 @@ var challenges_basic = new function() {
       self.renderIntersectOne(delta, 'worldBaseObject_box0', 'SECRETS');
     } else if (self.options.jsonFile.includes('conditions-3.json')) {
       self.renderIntersectOne(delta, 'worldBaseObject_box0', 'AZKABAN');
-    } else if (self.options.jsonFile.includes('bifrost-TEST-1.json')) {
-      self.renderIntersectOne(delta, 'worldBaseObject_box0', 'EXIT CODE 01');
     } else if (self.options.jsonFile.includes('conditions-4.json')) {
       self.renderIntersectOne(delta, 'worldBaseObject_box0', 'FIRE');
     } else if (self.options.jsonFile.includes('conditions-5.json')) {
