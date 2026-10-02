@@ -136,6 +136,9 @@ var challenges_basic = new function() {
           let filter = {
             deny: {
               categories: allCategories.filter(category => !allowedCategories.includes(category))
+            },
+            show: {
+              categories: allowedCategories
             }
           };
 
