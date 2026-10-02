@@ -81,6 +81,13 @@ var challenges_basic = new function() {
         ['Abstraction: Dungeon 9', 'worlds/challenges_basic/abstraction-9.json?v=3b330462'],
         ['Abstraction: Dungeon 10', 'worlds/challenges_basic/abstraction-10.json?v=499c54f1'],
         ['Abstraction: Dungeon 11', 'worlds/challenges_basic/abstraction-11.json?v=4f35d8a5'],
+        ['BIFROST 1: First Steps', 'worlds/challenges_basic/bifrost-1.json?v=1'],
+        ['BIFROST 2: Long Straight', 'worlds/challenges_basic/bifrost-2.json?v=1'],
+        ['BIFROST 3: First Turn', 'worlds/challenges_basic/bifrost-3.json?v=1'],
+        ['BIFROST 4: Two Turns', 'worlds/challenges_basic/bifrost-4.json?v=1'],
+        ['BIFROST 5: Checkpoints', 'worlds/challenges_basic/bifrost-5.json?v=1'],
+        ['BIFROST 6: Loop Route', 'worlds/challenges_basic/bifrost-6.json?v=1'],
+        ['BIFROST 7: Final Route', 'worlds/challenges_basic/bifrost-7.json?v=1'],
         ['BIFROST Test 1', 'worlds/challenges_basic/bifrost-TEST-1.json?v=0'],
       ]
     },
@@ -106,6 +113,34 @@ var challenges_basic = new function() {
         self.options = {...self.defaultOptions};
         Object.assign(self.options, data.options);
         Object.assign(self.options, options);
+
+        if (typeof blockly != 'undefined' && self.options.jsonFile.match(/bifrost-[1-7]\.json/)) {
+          let allowedCategories = ['Movement'];
+
+          if (
+            self.options.jsonFile.includes('bifrost-2')
+            || self.options.jsonFile.includes('bifrost-5')
+            || self.options.jsonFile.includes('bifrost-6')
+            || self.options.jsonFile.includes('bifrost-7')
+          ) {
+            allowedCategories.push('Loops');
+          }
+          if (self.options.jsonFile.includes('bifrost-6') || self.options.jsonFile.includes('bifrost-7')) {
+            allowedCategories.push('Control');
+          }
+          if (self.options.jsonFile.includes('bifrost-7')) {
+            allowedCategories.push('Logic');
+          }
+
+          let allCategories = ['Motion', 'Motor', 'Sensors', 'Sound', 'Pen', 'Experimental', 'Control', 'Logic', 'Loops', 'Math', 'Text', 'Lists', 'Variables', 'Functions'];
+          let filter = {
+            deny: {
+              categories: allCategories.filter(category => !allowedCategories.includes(category))
+            }
+          };
+
+          blockly.loadToolboxFilter(filter);
+        }
 
         return self.parent.setOptions(self.options);
       });
@@ -586,9 +621,41 @@ var challenges_basic = new function() {
         '<p>Move your robot into the green box and stop inside.</p>' +
         '<p>No blocks limits, but the green box changes position on reset.</p>'
       );
+    } else if (self.options.jsonFile.includes('bifrost-1.json')) {
+      $message = $('<p>Move forward into the green box and stop inside.</p>');
+    } else if (self.options.jsonFile.includes('bifrost-2.json')) {
+      $message = $(
+        '<p>Move forward into the green box and stop inside.</p>' +
+        '<p>Use a repeat loop to avoid repeating the same movement block.</p>'
+      );
+    } else if (self.options.jsonFile.includes('bifrost-3.json')) {
+      $message = $(
+        '<p>Reach the green box and stop inside.</p>' +
+        '<p>You will need to move forward and turn right.</p>'
+      );
+    } else if (self.options.jsonFile.includes('bifrost-4.json')) {
+      $message = $(
+        '<p>Reach the green box and stop inside.</p>' +
+        '<p>Plan a route with two turns.</p>'
+      );
+    } else if (self.options.jsonFile.includes('bifrost-5.json')) {
+      $message = $(
+        '<p>Visit every green checkpoint and stop inside each one.</p>' +
+        '<p>Use a loop to keep your program short.</p>'
+      );
+    } else if (self.options.jsonFile.includes('bifrost-6.json')) {
+      $message = $(
+        '<p>Visit all four green checkpoints.</p>' +
+        '<p>Use loops and careful turns to stay within the block limit.</p>'
+      );
+    } else if (self.options.jsonFile.includes('bifrost-7.json')) {
+      $message = $(
+        '<p>Complete the full five-checkpoint route.</p>' +
+        '<p>Use a compact program with loops and conditions.</p>'
+      );
     } else if (self.options.jsonFile.includes('bifrost-TEST-1.json')) {
       $message = $(
-        '<p> reyansh goons to cp </p>'
+        '<p> test </p>'
       );
     }
     
@@ -611,7 +678,21 @@ var challenges_basic = new function() {
     if (elapsedTime < 1000) {
       return;
     }
-    if (self.options.jsonFile.includes('bifrost-TEST-1')) {
+    if (self.options.jsonFile.includes('bifrost-1.json')) {
+      self.renderIntersectOne(delta, 'worldBaseObject_box0', 'BIFROST-1');
+    } else if (self.options.jsonFile.includes('bifrost-2.json')) {
+      self.renderIntersectOne(delta, 'worldBaseObject_box0', 'BIFROST-2', [], 5);
+    } else if (self.options.jsonFile.includes('bifrost-3.json')) {
+      self.renderIntersectOne(delta, 'worldBaseObject_box0', 'BIFROST-3', [], 6);
+    } else if (self.options.jsonFile.includes('bifrost-4.json')) {
+      self.renderIntersectOne(delta, 'worldBaseObject_box0', 'BIFROST-4', [], 7);
+    } else if (self.options.jsonFile.includes('bifrost-5.json')) {
+      self.renderIntersectMulti(delta, ['worldBaseObject_box0', 'worldBaseObject_box1', 'worldBaseObject_box2'], true, 'BIFROST-5', 'color', [], 7);
+    } else if (self.options.jsonFile.includes('bifrost-6.json')) {
+      self.renderIntersectMulti(delta, ['worldBaseObject_box0', 'worldBaseObject_box1', 'worldBaseObject_box2', 'worldBaseObject_box3'], true, 'BIFROST-6', 'color', [], 9);
+    } else if (self.options.jsonFile.includes('bifrost-7.json')) {
+      self.renderIntersectMulti(delta, ['worldBaseObject_box0', 'worldBaseObject_box1', 'worldBaseObject_box2', 'worldBaseObject_box3', 'worldBaseObject_box4'], true, 'BIFROST-7', 'color', [], 10);
+    } else if (self.options.jsonFile.includes('bifrost-TEST-1')) {
       self.renderIntersectOne(delta, 'worldBaseObject_box0', 'BIFROST');
     } else if (self.options.jsonFile.includes('basic-1.json')) {
       self.renderIntersectOne(delta, 'worldBaseObject_box0', 'UNICORN');
