@@ -248,6 +248,10 @@
 
     function loadFilterFromGET() {
       let filterBlocksJSON = readGET('filterBlocksJSON');
+      let worldJSON = readGET('worldJSON');
+      if (worldJSON && decodeURIComponent(worldJSON).match(/bifrost-[1-7]\.json/)) {
+        return;
+      }
       if (filterBlocksJSON) {
         blockly.loadToolboxFilterURL(decodeURIComponent(filterBlocksJSON));
       }
