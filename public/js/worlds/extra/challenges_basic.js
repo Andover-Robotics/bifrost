@@ -115,8 +115,10 @@ var challenges_basic = new function() {
         Object.assign(self.options, options);
 
         let isBifrostLevel = self.options.jsonFile.match(/bifrost-[1-7]\.json/);
-        if (typeof blockly != 'undefined' && isBifrostLevel && typeof blockly.workspace != 'undefined') {
-          blockly.loadDefaultWorkspace();
+        if (typeof blockly != 'undefined' && isBifrostLevel) {
+          if (typeof blockly.workspace != 'undefined') {
+            blockly.loadDefaultWorkspace();
+          }
 
           let allowedCategories = ['Movement'];
 
