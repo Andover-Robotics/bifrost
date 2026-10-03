@@ -1,5 +1,5 @@
 {
-  "worldName": "custom",
+  "worldName": "challenges_basic",
   "options": {
     "imageURL": "https://files.aposteriori.com.sg/get/6f9tFT9tXt.png",
     "groundType": "box", "length": 100, "width": 100, "uScale": 1, "vScale": 1, "imageScale": 2,

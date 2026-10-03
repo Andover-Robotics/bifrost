@@ -78,18 +78,6 @@ var main = new function() {
     }
   };
 
-  // Open a window with a link to the arena page
-  this.arenaWindow = function() {
-    let options = {
-      title: i18n.get('#main-arenaTitle#'),
-      message: i18n.get('#main-arenaDescription#'),
-      confirm: i18n.get('#main-arenaGo#')
-    };
-    confirmDialog(options, function(){
-      self.openPage('arena.html');
-    });
-  };
-
   // Load project name from local storage
   this.loadProjectName = function() {
     self.$projectName.val(localStorage.getItem('projectName'));
@@ -366,30 +354,6 @@ var main = new function() {
     babylon.world.setOptions();
   };
 
-  // Open a window with a link to the robot configurator page
-  this.configuratorWindow = function() {
-    let options = {
-      title: i18n.get('#main-configurator_title#'),
-      message: i18n.get('#main-configurator_description#'),
-      confirm: i18n.get('#main-configurator_go#')
-    };
-    confirmDialog(options, function(){
-      self.openPage('configurator.html');
-    });
-  };
-
-  // Open a window with a link to the world builder page
-  this.worldBuilderWindow = function() {
-    let options = {
-      title: i18n.get('#main-worldBuilder_title#'),
-      message: i18n.get('#main-worldBuilder_description#'),
-      confirm: i18n.get('#main-worldBuilder_go#')
-    };
-    confirmDialog(options, function(){
-      self.openPage('builder.html');
-    });
-  };
-
   // Toggle robot menu
   this.toggleRobotMenu = function(e) {
     if ($('.robotMenuDropDown').length == 0) {
@@ -398,7 +362,6 @@ var main = new function() {
 
       let menuItems = [
         {html: i18n.get('#main-select_robot#'), line: false, callback: self.selectRobot},
-        {html: i18n.get('#main-robot_configurator#'), line: true, callback: self.configuratorWindow},
         {html: i18n.get('#main-robot_load_file#'), line: false, callback: self.loadRobotLocal},
         {html: i18n.get('#main-robot_save_file#'), line: true, callback: self.saveRobot},
         {html: i18n.get('#main-display_position#'), line: false, callback: self.displayPosition},
@@ -418,8 +381,6 @@ var main = new function() {
 
       let menuItems = [
         {html: i18n.get('#main-select_world#'), line: false, callback: simPanel.selectWorld},
-        {html: i18n.get('#main-world_builder#'), line: false, callback: self.worldBuilderWindow},
-        {html: i18n.get('#main-arena#'), line: true, callback: self.arenaWindow},
         {html: i18n.get('#main-world_load_file#'), line: false, callback: simPanel.loadWorldLocal},
         {html: i18n.get('#main-world_save_file#'), line: false, callback: simPanel.saveWorld},
       ];
