@@ -265,7 +265,7 @@ var World_Base = function() {
       img.crossOrigin = "anonymous";
       img.onerror = function() {
         showErrorModal(
-          '<p>Gears cannot load this image.</p>' +
+          '<p>BIFROST cannot load this image.</p>' +
           '<p>Either the image URL is wrong, or the server that hosts this image do not allow cross origin access (...most servers do not).</p>' +
           '<p>Try hosting the image on Imgur. They are known to allow cross origin access.</p>'
         );

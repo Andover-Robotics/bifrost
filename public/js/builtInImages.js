@@ -7,7 +7,7 @@ BUILT_IN_IMAGES = [
   {
     url: 'textures/box/cardboard.png',
     type: 'box',
-    description: 'Box full of Gears!'
+    description: 'Box full of BIFROST!'
   },
   {
     url: 'textures/box/cautionSquare.png',
@@ -92,7 +92,7 @@ BUILT_IN_IMAGES = [
   {
     url: 'textures/cylinder/wheel.png',
     type: 'cylinder',
-    description: 'The GearsBot wheel.'
+    description: 'The BIFROST wheel.'
   },
   {
     url: 'textures/sphere/basketBall.jpg',

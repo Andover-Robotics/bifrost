@@ -10,7 +10,7 @@
   <link rel="icon" href="favicon-167.png" sizes="167x167">
   <link rel="icon" href="favicon-192.png" sizes="192x192">
 
-  <title>GearsBot URL Generator</title>
+  <title>BIFROST URL Generator</title>
 
   <style>
     div {
@@ -33,7 +33,7 @@
 
 <body>
   <header>
-    <h1>GearsBot URL Generator</h1>
+    <h1>BIFROST URL Generator</h1>
   </header>
 
   <main>
@@ -77,9 +77,9 @@
         Your webserver must support https.
       </p>
       <p>
-        If you are hosting Gears on your own server, change the first part of the generated URL accordingly.
-        If the json files are on the same site as your hosted Gears, you can safely ignore the CORS error.
-        You can also ignore the https error if you are hosting Gears on a http site.
+        If you are hosting BIFROST on your own server, change the first part of the generated URL accordingly.
+        If the json files are on the same site as your hosted BIFROST, you can safely ignore the CORS error.
+        You can also ignore the https error if you are hosting BIFROST on a http site.
       </p>
     </div>
   </main>
@@ -156,13 +156,13 @@
 
       // Check if is http
       if (worldURL && ! isHTTPS(worldURL)) {
-        errorOut('World URL must be served over https. Gears uses https and browser security will not allow a mix of http and https.');
+        errorOut('World URL must be served over https. BIFROST uses https and browser security will not allow a mix of http and https.');
       }
       if (robotURL && ! isHTTPS(robotURL)) {
-        errorOut('Robot URL must be served over https. Gears uses https and browser security will not allow a mix of http and https.');
+        errorOut('Robot URL must be served over https. BIFROST uses https and browser security will not allow a mix of http and https.');
       }
       if (blocksURL && ! isHTTPS(blocksURL)) {
-        errorOut('Blocks Filter URL must be served over https. Gears uses https and browser security will not allow a mix of http and https.');
+        errorOut('Blocks Filter URL must be served over https. BIFROST uses https and browser security will not allow a mix of http and https.');
       }
 
       // Check CORS

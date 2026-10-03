@@ -201,7 +201,7 @@ var main = new function() {
         '<p>If you\'re in the market for STEM training, do consider <a href="https://aposteriori.com.sg" target="_blank">A Posteriori</a>.</p>' +
         '<h3>License</h3>' +
         '<p>GNU General Public License v3.0</p>' +
-        '<p>Gears is a Free and Open Source Software</p>' +
+        '<p>BIFROST is free and open source software.</p>' +
       '</div>'
     );
 
@@ -471,7 +471,7 @@ var main = new function() {
   this.saveZipToComputer = function() {
     let filename = self.$projectName.val();
     if (filename.trim() == '') {
-      filename = 'gearsBot';
+      filename = 'bifrostBot';
     }
 
     let meta = {
@@ -582,7 +582,7 @@ var main = new function() {
   this.saveToComputer = function() {
     let filename = self.$projectName.val();
     if (filename.trim() == '') {
-      filename = 'gearsBot';
+      filename = 'bifrostBot';
     }
     self.downloadFile(filename + '.xml', encodeURIComponent(blockly.getXmlText()), 'application/xml;', encoding='charset=UTF-8');
   };
@@ -650,7 +650,7 @@ var main = new function() {
   this.savePythonToComputer = async function() {
     let filename = self.$projectName.val();
     if (filename.trim() == '') {
-      filename = 'gearsBot';
+      filename = 'bifrostBot';
     }
 
     if (filesManager.modified == false) {
