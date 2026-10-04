@@ -56,7 +56,7 @@ var challenges_basic = new function() {
 
         let isBifrostLevel = self.options.jsonFile.match(/bifrost-[1-7]\.json/);
         if (typeof blockly != 'undefined' && isBifrostLevel) {
-          if (typeof blockly.workspace != 'undefined') {
+          if (typeof blockly.workspace == 'undefined') {
             blockly.loadDefaultWorkspace();
           }
 
