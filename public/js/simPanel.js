@@ -7,7 +7,7 @@ var simPanel = new function() {
   self.pickedPoints = [null, null];
   self.touchDevice = false;
   self.drag = false;
-  self.showFPS = false;
+  self.showFPS = true;
 
   // Run on page load
   this.init = function() {
