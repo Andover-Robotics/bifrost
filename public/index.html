@@ -242,6 +242,11 @@
       if (worldJSON && decodeURIComponent(worldJSON).match(/bifrost-[1-7]\.json/)) {
         return;
       }
+
+        if (worldScripts && worldScripts.includes('challenges_basic')) {
+            return;  // challenges_basic.js applies its own filter
+        }
+
       if (filterBlocksJSON) {
         blockly.loadToolboxFilterURL(decodeURIComponent(filterBlocksJSON));
       }
