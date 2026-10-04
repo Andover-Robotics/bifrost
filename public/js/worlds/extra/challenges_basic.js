@@ -574,38 +574,29 @@ var challenges_basic = new function() {
     } else if (self.options.jsonFile.includes('bifrost-2.json')) {
       $message = $(
         '<p>Move forward into the green box and stop inside.</p>' +
-        '<p>Use a repeat loop to avoid repeating the same movement block.</p>' +
-        '<p>You may use 5 blocks.</p>'
+        '<p>Use a repeat loop to avoid repeating the same movement block.</p>'
       );
     } else if (self.options.jsonFile.includes('bifrost-3.json')) {
       $message = $(
         '<p>Reach the green box and stop inside.</p>' +
-        '<p>You will need to move forward and turn right.</p>' +
-        '<p>You may use 6 blocks.</p>'
-      );
+        '<p>You will need to turn right and move forward.</p>'      );
     } else if (self.options.jsonFile.includes('bifrost-4.json')) {
       $message = $(
         '<p>Reach the green box and stop inside.</p>' +
-        '<p>A barrier blocks the direct route, so plan two turns.</p>' +
-        '<p>You may use 7 blocks.</p>'
-      );
+        '<p>A barrier blocks the direct route, so plan two turns.</p>'      );
     } else if (self.options.jsonFile.includes('bifrost-5.json')) {
       $message = $(
         '<p>Visit every green checkpoint and stop inside each one.</p>' +
-        '<p>Use a loop to keep your program short.</p>' +
-        '<p>You may use 6 blocks.</p>'
-      );
+        '<p>Use a loop to keep your program short.</p>'      );
     } else if (self.options.jsonFile.includes('bifrost-6.json')) {
       $message = $(
         '<p>Visit all four green checkpoints.</p>' +
-        '<p>Use loops and careful turns to stay within 8 blocks.</p>'
+        '<p>Use loops and careful turns to reduce the number of blocks used.</p>'
       );
     } else if (self.options.jsonFile.includes('bifrost-7.json')) {
       $message = $(
         '<p>Complete the full five-checkpoint route.</p>' +
-        '<p>Use a compact program with loops and careful turns.</p>' +
-        '<p>You may use 10 blocks.</p>'
-      );
+        '<p>Use a compact program with loops and careful turns.</p>'      );
     } else if (self.options.jsonFile.includes('bifrost-TEST-1.json')) {
       $message = $(
         '<p> test </p>'
