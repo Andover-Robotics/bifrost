@@ -171,7 +171,7 @@ var main = new function() {
         '<div></div>' +
         '<h3>Credits</h3>' +
         '<p>A project by the FTC Team 5273 ARC Thunder</p>' +
-        '<p>Our website: <a href="https://www.andoverrobotics.com/our-teams_1/thunder" target="_blank">andoverrobotics.com/our-teams_1/thunder</a></p>' +
+        '<p>Our website: <a href="https://www.andoverrobotics.com/thunder" target="_blank">andoverrobotics.com/thunder</a></p>' +
 
         '<h3>License</h3>' +
         '<p>GNU General Public License v3.0</p>' +
