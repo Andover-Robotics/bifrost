@@ -5,6 +5,22 @@ var blockly = new function() {
     'base': Blockly.Themes.Classic,
     'startHats': true
   });
+  self.darkTheme = Blockly.Theme.defineTheme('darkTheme', {
+    'base': self.theme,
+    'componentStyles': {
+      'workspaceBackgroundColour': '#1b1f24',
+      'toolboxBackgroundColour': '#252c33',
+      'toolboxForegroundColour': '#e6edf3',
+      'flyoutBackgroundColour': '#29313a',
+      'flyoutForegroundColour': '#e6edf3',
+      'flyoutOpacity': 0.98,
+      'scrollbarColour': '#596675',
+      'insertionMarkerColour': '#8ab9f4',
+      'insertionMarkerOpacity': 0.4,
+      'markerColour': '#8ab9f4',
+      'cursorColour': '#e6edf3'
+    }
+  });
 
   var options = {
     toolbox : null,
@@ -53,6 +69,16 @@ var blockly = new function() {
     document.head.appendChild(script);
   };
 
+  this.setTheme = function(isDark) {
+    var theme = isDark ? self.darkTheme : self.theme;
+    if (self.displayedWorkspace) {
+      self.displayedWorkspace.setTheme(theme);
+    }
+    if (self.workspace) {
+      self.workspace.setTheme(theme);
+    }
+  };
+
   // Load toolbox
   this.loadToolBox = function() {
     return fetch('toolbox.xml?v=b53ac963')
@@ -72,6 +98,7 @@ var blockly = new function() {
         }
 
         self.workspace = Blockly.inject('blocklyHiddenDiv', options);
+        self.setTheme($('body').hasClass('darkMode'));
         // self.minimap = new Minimap(self.displayedWorkspace);
         // self.minimap.init();
         self.displayedWorkspace.addChangeListener(self.mirrorEvent);
@@ -550,4 +577,3 @@ var blockly = new function() {
     moveBlock(self.workspace.getBlockById(selected.id), to);
   };
 }
-
