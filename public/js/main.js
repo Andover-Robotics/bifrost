@@ -170,6 +170,14 @@ var main = new function() {
       '<div class="about">' +
         '<div></div>' +
         '<h3>Credits</h3>' +
+        '<p>A project by the FTC Team 5273 ARC Thunder</p>' +
+        '<p>Our website: <a href="https://www.andoverrobotics.com/our-teams_1/thunder" target="_blank">andoverrobotics.com/our-teams_1/thunder</a></p>' +
+
+        '<h3>License</h3>' +
+        '<p>GNU General Public License v3.0</p>' +
+        '<p>BIFROST is a free and open source software</p>' +
+
+        '<h4><br><br><br>Below are the credits for Gears, a GPL v3.0 licensed project which BIFROST includes code from</h3>' +
         '<p>Created by Cort @ <a href="https://aposteriori.com.sg" target="_blank">A Posteriori</a>.</p>' +
         '<p>This simulator would not have been possible without the great people behind:</p>' +
         '<ul>' +
@@ -196,12 +204,6 @@ var main = new function() {
           '<li>Русский: Pavel Khoroshevich &lt;khoroshevich.pa@gmail.com&gt;</li>' +
           '<li>Magyar: Niethammer Zoltán</li>' +
         '</ul>' +
-        '<h3>Contact</h3>' +
-        '<p>Please direct all complaints or requests to <a href="mailto:cort@aposteriori.com.sg">Cort</a>.</p>' +
-        '<p>If you\'re in the market for STEM training, do consider <a href="https://aposteriori.com.sg" target="_blank">A Posteriori</a>.</p>' +
-        '<h3>License</h3>' +
-        '<p>GNU General Public License v3.0</p>' +
-        '<p>BIFROST is free and open source software.</p>' +
       '</div>'
     );
 
@@ -229,8 +231,8 @@ var main = new function() {
       e.stopPropagation();
 
       let menuItems = [
-        {html: 'Wiki', line: false, callback: function() { self.openPage('https://github.com/QuirkyCort/gears/wiki'); }},
-        {html: 'Github', line: false, callback: function() { self.openPage('https://github.com/QuirkyCort/gears'); }},
+        {html: 'Wiki', line: false, callback: function() { self.openPage('https://github.com/Andover-Robotics/gears-bifrost/wiki'); }},
+        {html: 'Github', line: false, callback: function() { self.openPage('https://github.com/Andover-Robotics/gears-bifrost'); }},
         {html: 'URL Generator', line: false, callback: function() { self.openPage('genURL.html'); }},
         {html: i18n.get('#main-whats_new#'), line: false, callback: function() { self.showWhatsNew(true); }},
         {html: i18n.get('#main-privacy#'), line: false, callback: function() { self.openPage('privacy.html'); }},
