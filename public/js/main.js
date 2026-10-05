@@ -14,7 +14,9 @@ var main = new function() {
     self.$projectName = $('#projectName');
     self.$languageMenu = $('.language');
     self.$newsButton = $('.news');
+    self.$themeToggle = $('.themeToggle');
 
+    self.loadTheme();
     self.updateTextLanguage();
 
     self.$navs.click(self.tabClicked);
@@ -24,6 +26,7 @@ var main = new function() {
     self.$worldsMenu.click(self.toggleWorldsMenu);
     self.$helpMenu.click(self.toggleHelpMenu);
     self.$languageMenu.click(self.toggleLanguageMenu);
+    self.$themeToggle.click(self.toggleTheme);
     self.$newsButton.click(self.showNews);
 
     self.$projectName.change(self.saveProjectName);
@@ -33,6 +36,31 @@ var main = new function() {
     self.loadProjectName();
 
     self.showWhatsNew();
+  };
+
+  this.loadTheme = function() {
+    var isDark = localStorage.getItem('theme') === 'dark';
+    $('body').toggleClass('darkMode', isDark);
+    if (typeof blockly !== 'undefined' && blockly.setTheme) {
+      blockly.setTheme(isDark);
+    }
+    self.updateThemeToggle(isDark);
+  };
+
+  this.updateThemeToggle = function(isDark) {
+    self.$themeToggle.attr('aria-pressed', isDark ? 'true' : 'false');
+    self.$themeToggle.attr('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    self.$themeToggle.find('span').text(isDark ? '☀' : '☾');
+  };
+
+  this.toggleTheme = function() {
+    var isDark = !$('body').hasClass('darkMode');
+    $('body').toggleClass('darkMode', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    if (typeof blockly !== 'undefined' && blockly.setTheme) {
+      blockly.setTheme(isDark);
+    }
+    self.updateThemeToggle(isDark);
   };
 
   // Update text already in html
