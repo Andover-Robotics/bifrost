@@ -231,8 +231,8 @@ var main = new function() {
       e.stopPropagation();
 
       let menuItems = [
-        {html: 'Wiki', line: false, callback: function() { self.openPage('https://github.com/Andover-Robotics/gears-bifrost/wiki'); }},
-        {html: 'Github', line: false, callback: function() { self.openPage('https://github.com/Andover-Robotics/gears-bifrost'); }},
+        {html: 'Wiki', line: false, callback: function() { self.openPage('https://github.com/Andover-Robotics/bifrost/wiki'); }},
+        {html: 'Github', line: false, callback: function() { self.openPage('https://github.com/Andover-Robotics/bifrost'); }},
         {html: 'URL Generator', line: false, callback: function() { self.openPage('genURL.html'); }},
         {html: i18n.get('#main-whats_new#'), line: false, callback: function() { self.showWhatsNew(true); }},
         {html: i18n.get('#main-privacy#'), line: false, callback: function() { self.openPage('privacy.html'); }},
