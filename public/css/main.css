@@ -883,6 +883,40 @@ ul.menuDropDownRightAlign {
   #arenaFrame.bot3.disabled #player {
     color: gray; }
 
+  header .themeToggle {
+    margin-left: 1em;
+    padding: 0.2em 0.4em;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 0.3em;
+    background: transparent;
+    color: white;
+    cursor: pointer; }
+
+  body.darkMode {
+    color-scheme: dark;
+    background: #1b1f24;
+    color: #e6edf3; }
+
+  body.darkMode nav {
+    border-color: #3b4652; }
+
+  body.darkMode nav ul.panelTabs li {
+    background: #29313a;
+    border-color: #3b4652;
+    color: #aeb8c2; }
+
+  body.darkMode nav ul.panelTabs li.active {
+    background: #1b1f24;
+    color: #76affc; }
+
+  body.darkMode nav .menuBar .menuItem {
+    color: #b5c0ca; }
+
+  body.darkMode header #projectName,
+  body.darkMode header #robotName {
+    background: #356ca8;
+    border-color: #8ab9f4; }
+
 .botsPanel {
   background: white; }
   .botsPanel .botsRow {

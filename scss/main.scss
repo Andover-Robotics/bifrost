@@ -49,6 +49,16 @@ header {
     cursor: pointer;
     user-select: none;
   }
+
+  .themeToggle {
+    margin-left: 1em;
+    padding: 0.2em 0.4em;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 0.3em;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+  }
 }
 
 .bold {
@@ -247,6 +257,36 @@ ul.menuDropDown {
 
 ul.menuDropDownRightAlign {
   top: 100%;
+}
+
+body.darkMode {
+  color-scheme: dark;
+  background: #1b1f24;
+  color: #e6edf3;
+
+  nav {
+    border-color: #3b4652;
+
+    ul.panelTabs li {
+      background: #29313a;
+      border-color: #3b4652;
+      color: #aeb8c2;
+    }
+
+    ul.panelTabs li.active {
+      background: #1b1f24;
+      color: #76affc;
+    }
+
+    .menuBar .menuItem {
+      color: #b5c0ca;
+    }
+  }
+
+  header #projectName, header #robotName {
+    background: #356ca8;
+    border-color: #8ab9f4;
+  }
 }
 
 @import '_blocklyPanel.scss';
