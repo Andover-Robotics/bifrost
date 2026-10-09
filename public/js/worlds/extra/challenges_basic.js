@@ -133,12 +133,6 @@ var challenges_basic = new function() {
     return false;
   };
 
-  this.advanceAfterCompletion = function($dialog) {
-    if (self.loadNextBifrostLevel()) {
-      $dialog.close();
-    }
-  };
-
   this.countBlocks = function() {
     let blocks = blockly.workspace.getBlocksByType('when_started')[0].getDescendants();
     let count = blocks.reduce(
@@ -201,16 +195,15 @@ var challenges_basic = new function() {
           let time = Math.round((Date.now() - self.challengeStartTime) / 100) / 10;
 
           self.playVictory();
-          let completionDialog = acknowledgeDialog({
+          acknowledgeDialog({
             title: 'COMPLETED!',
             message: $(
               '<p>Completion code: ' + completionCode + '</p>' +
               '<p>Time: ' + time + ' seconds</p>'
             )
+          }, function() {
+            setTimeout(self.loadNextBifrostLevel, 0);
           });
-          setTimeout(function() {
-            self.advanceAfterCompletion(completionDialog);
-          }, 1000);
         }
       } else {
         self.ended = true;
@@ -286,16 +279,15 @@ var challenges_basic = new function() {
           let time = Math.round((Date.now() - self.challengeStartTime) / 100) / 10;
 
           self.playVictory();
-          let completionDialog = acknowledgeDialog({
+          acknowledgeDialog({
             title: 'COMPLETED!',
             message: $(
               '<p>Completion code: ' + completionCode + '</p>' +
               '<p>Time: ' + time + ' seconds</p>'
             )
+          }, function() {
+            setTimeout(self.loadNextBifrostLevel, 0);
           });
-          setTimeout(function() {
-            self.advanceAfterCompletion(completionDialog);
-          }, 1000);
         }
       } else {
         self.ended = true;
