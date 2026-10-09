@@ -108,12 +108,20 @@ var challenges_basic = new function() {
   this.loadNextBifrostLevel = function() {
     let match = self.options.jsonFile.match(/bifrost-([1-7])\.json/);
     if (!match) {
-      return;
+      return false;
     }
 
     let level = Number(match[1]);
     if (level < 7) {
       simPanel.loadWorldURL('worlds/challenges_basic/bifrost-' + (level + 1) + '.json?v=1');
+      return true;
+    }
+    return false;
+  };
+
+  this.advanceAfterCompletion = function($dialog) {
+    if (self.loadNextBifrostLevel()) {
+      $dialog.close();
     }
   };
 
@@ -179,14 +187,16 @@ var challenges_basic = new function() {
           let time = Math.round((Date.now() - self.challengeStartTime) / 100) / 10;
 
           self.playVictory();
-          acknowledgeDialog({
+          let completionDialog = acknowledgeDialog({
             title: 'COMPLETED!',
             message: $(
               '<p>Completion code: ' + completionCode + '</p>' +
               '<p>Time: ' + time + ' seconds</p>'
-            ),
-          }, self.loadNextBifrostLevel);
+            )
           });
+          setTimeout(function() {
+            self.advanceAfterCompletion(completionDialog);
+          }, 1000);
         }
       } else {
         self.ended = true;
@@ -262,14 +272,16 @@ var challenges_basic = new function() {
           let time = Math.round((Date.now() - self.challengeStartTime) / 100) / 10;
 
           self.playVictory();
-          acknowledgeDialog({
+          let completionDialog = acknowledgeDialog({
             title: 'COMPLETED!',
             message: $(
               '<p>Completion code: ' + completionCode + '</p>' +
               '<p>Time: ' + time + ' seconds</p>'
-            ),
-          }, self.loadNextBifrostLevel);
+            )
           });
+          setTimeout(function() {
+            self.advanceAfterCompletion(completionDialog);
+          }, 1000);
         }
       } else {
         self.ended = true;
