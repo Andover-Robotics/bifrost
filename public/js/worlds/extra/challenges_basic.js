@@ -40,7 +40,8 @@ var challenges_basic = new function() {
 
   this.defaultOptions = Object.assign(this.defaultOptions, {
     jsonFile: this.optionsConfigurations[0].options[0][1],
-    useDefaultRobot: true
+    useDefaultRobot: true,
+    imageURL: 'https://files.aposteriori.com.sg/get/6f9tFT9tXt.png'
   });
 
   // Set options, including default
