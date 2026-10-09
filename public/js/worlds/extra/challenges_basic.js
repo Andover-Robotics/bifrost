@@ -113,7 +113,21 @@ var challenges_basic = new function() {
 
     let level = Number(match[1]);
     if (level < 7) {
-      simPanel.loadWorldURL('worlds/challenges_basic/bifrost-' + (level + 1) + '.json?v=1');
+      let nextLevelURL = 'worlds/challenges_basic/bifrost-' + (level + 1) + '.json?v=1';
+      fetch(nextLevelURL)
+        .then(function(response) {
+          if (!response.ok) {
+            throw new Error('Unable to load the next BIFROST level');
+          }
+          return response.json();
+        })
+        .then(function(worldJSON) {
+          worldJSON.options.jsonFile = nextLevelURL;
+          simPanel.loadWorld(JSON.stringify(worldJSON));
+        })
+        .catch(function(error) {
+          showErrorModal(error.message);
+        });
       return true;
     }
     return false;
