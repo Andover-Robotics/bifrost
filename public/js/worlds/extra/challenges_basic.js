@@ -105,6 +105,18 @@ var challenges_basic = new function() {
     self.audio[0].play();
   };
 
+  this.loadNextBifrostLevel = function() {
+    let match = self.options.jsonFile.match(/bifrost-([1-7])\.json/);
+    if (!match) {
+      return;
+    }
+
+    let level = Number(match[1]);
+    if (level < 7) {
+      simPanel.loadWorldURL('worlds/challenges_basic/bifrost-' + (level + 1) + '.json?v=1');
+    }
+  };
+
   this.countBlocks = function() {
     let blocks = blockly.workspace.getBlocksByType('when_started')[0].getDescendants();
     let count = blocks.reduce(
@@ -172,7 +184,8 @@ var challenges_basic = new function() {
             message: $(
               '<p>Completion code: ' + completionCode + '</p>' +
               '<p>Time: ' + time + ' seconds</p>'
-            )
+            ),
+          }, self.loadNextBifrostLevel);
           });
         }
       } else {
@@ -254,7 +267,8 @@ var challenges_basic = new function() {
             message: $(
               '<p>Completion code: ' + completionCode + '</p>' +
               '<p>Time: ' + time + ' seconds</p>'
-            )
+            ),
+          }, self.loadNextBifrostLevel);
           });
         }
       } else {
