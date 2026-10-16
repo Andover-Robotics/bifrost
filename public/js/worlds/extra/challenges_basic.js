@@ -6,6 +6,8 @@ var challenges_basic = new function() {
   }
 
   var self = this;
+  var bifrostCompletionStorageKey = 'gears-bifrost-completed-levels';
+  var sessionCompletedBifrostLevels = {};
 
   this.name = 'challenges_basic';
   this.shortDescription = 'Basic Challenges';
@@ -37,6 +39,43 @@ var challenges_basic = new function() {
       help: 'If you want to use your own robot, uncheck this option.'
     },
   ];
+
+  this.getCompletedBifrostLevels = function() {
+    try {
+      let storedLevels = localStorage.getItem(bifrostCompletionStorageKey);
+      let completedLevels = storedLevels ? JSON.parse(storedLevels) : {};
+      return completedLevels && typeof completedLevels == 'object' && !Array.isArray(completedLevels)
+        ? completedLevels
+        : {};
+    } catch (error) {
+      return sessionCompletedBifrostLevels;
+    }
+  };
+
+  this.isBifrostLevelCompleted = function(jsonFile) {
+    let match = jsonFile && jsonFile.match(/bifrost-([1-7])\.json/);
+    return match ? Boolean(self.getCompletedBifrostLevels()[match[1]]) : false;
+  };
+
+  this.getOptionLabel = function(option) {
+    return self.isBifrostLevelCompleted(option[1]) ? '✓ ' + option[0] : option[0];
+  };
+
+  this.markBifrostLevelCompleted = function() {
+    let match = self.options.jsonFile && self.options.jsonFile.match(/bifrost-([1-7])\.json/);
+    if (!match) {
+      return;
+    }
+
+    let completedLevels = self.getCompletedBifrostLevels();
+    completedLevels[match[1]] = true;
+    sessionCompletedBifrostLevels = completedLevels;
+    try {
+      localStorage.setItem(bifrostCompletionStorageKey, JSON.stringify(completedLevels));
+    } catch (error) {
+      // Keep the completion available for this page session when storage is blocked.
+    }
+  };
 
   this.defaultOptions = Object.assign(this.defaultOptions, {
     jsonFile: this.optionsConfigurations[0].options[0][1],
@@ -193,6 +232,7 @@ var challenges_basic = new function() {
           });
         } else {
           self.ended = true;
+          self.markBifrostLevelCompleted();
           let time = Math.round((Date.now() - self.challengeStartTime) / 100) / 10;
 
           self.playVictory();
@@ -277,6 +317,7 @@ var challenges_basic = new function() {
           });
         } else {
           self.ended = true;
+          self.markBifrostLevelCompleted();
           let time = Math.round((Date.now() - self.challengeStartTime) / 100) / 10;
 
           self.playVictory();

@@ -783,7 +783,7 @@ var simPanel = new function() {
       return $title;
     }
 
-    function genSelect(opt, currentOptions) {
+    function genSelect(opt, currentOptions, world) {
       let $div = $('<div class="configuration"></div>');
       let $select = $('<select></select>');
       let currentVal = currentOptions[opt.option];
@@ -792,7 +792,8 @@ var simPanel = new function() {
       opt.options.forEach(function(option){
         let $opt = $('<option></option>');
         $opt.prop('value', option[1]);
-        $opt.text(option[0]);
+        let optionLabel = world.getOptionLabel ? world.getOptionLabel(option) : option[0];
+        $opt.text(optionLabel);
         if (option[1] == currentVal) {
           $opt.attr('selected', true);
         }
@@ -995,7 +996,7 @@ var simPanel = new function() {
       worldOptionsSetting = {};
       for (let optionConfiguration of world.optionsConfigurations) {
         if (optionConfiguration.type == 'select') {
-          $configurations.append(genSelect(optionConfiguration, worldOptions));
+          $configurations.append(genSelect(optionConfiguration, worldOptions, world));
         } else if (optionConfiguration.type == 'selectWithHTML') {
           $configurations.append(genSelectWithHTML(optionConfiguration, worldOptions));
         } else if (optionConfiguration.type == 'checkbox') {
